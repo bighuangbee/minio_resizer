@@ -51,7 +51,7 @@ MINIO_ACCESS_KEY: YOUR_MINIO_ACCESS_KEY
 MINIO_SECRET_KEY: YOUR_MINIO_SECRET_KEY
 ```
 
-set bucket as public permission.
+set bucket as public permission. 动态缩略图需要对Bucket开放读写权限
 
 ```sh
 $ mc config host add minio http://localhost:9000 MINIO_ACCESS_KEY MINIO_SECRET_KEY
