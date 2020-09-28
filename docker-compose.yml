@@ -2,31 +2,33 @@ version: '3'
 
 services:
   minio:
-    image: minio/minio
+    image: minio/minio:latest
     container_name: minio
-    #restart: always
+    restart: always
     ports:
       - 9000:9000
     volumes:
-      - /data/minio:/data
+      - /data/minio/data:/data
+      - /data/minio/config:/root/.minio
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
-        max-size: "1k"
-        max-file: "3"
+        max-size: "200M"
+        max-file: "10"
     environment:
-      MINIO_ACCESS_KEY: MINIO_ACCESS_KEY
-      MINIO_SECRET_KEY: MINIO_SECRET_KEY
+      MINIO_ACCESS_KEY: admin
+      MINIO_SECRET_KEY: hidroneoss123.
     command: server /data
 
   minio_resizer:
+    build: ./
     image: minio_resizer
     container_name: minio_resizer
-    #restart: always
+    restart: always
     ports:
       - 9001:80
     volumes:
-      - /data/cache:/data
+      - /data/reiszer_cache:/data
     logging:
       driver: "json-file"
       options:

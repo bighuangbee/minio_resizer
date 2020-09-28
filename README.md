@@ -8,6 +8,11 @@ Docker Container of real time image resizing and caching
 $ docker build -t minio_resizer .
 ```
 
+####在浏览器无法修改密码
+```bash
+先备份/data/minio/data, 删除config，compose设置新密码后重新启动
+rm /data/minio/data/.minio.sys/config/ -rf
+```
 ## RUN Image
 
 ```
